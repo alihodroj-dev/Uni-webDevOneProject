@@ -1,0 +1,499 @@
+:root {
+    --color-bg-light: #F4F6F8;
+    --color-bg-dark: #0D0D0D;
+    --color-bg-secondary-dark: #101010;
+    --color-accent: #7E5A9B;
+}
+
+.buttonWithRightIcon {
+    padding: 0.5rem 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    transition-duration: 0.5s;
+    cursor: pointer;
+}
+
+.buttonWithRightIcon:hover {
+    scale: 1.1;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat";
+    overflow-x: hidden;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+span {
+    color: var(--color-accent);
+}
+
+i {
+    color: var(--color-accent);
+}
+
+header {
+    margin: 0;
+    padding: 0px;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--color-bg-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav {
+    margin: 0;
+    padding: 1.5rem 0px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.navTitleLogo {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+nav ul li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+nav ul li:hover {
+    border-bottom: solid 4px #7E5A9B;
+}
+
+.navActionButton {
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--color-bg-light);
+    background-color: var(--color-accent);
+    border-radius: 8px;
+    box-shadow: 1px 1px 10px var(--color-accent);
+    transition-duration: 0.5s;
+}
+
+.navActionButton:hover {
+    scale: 1.1;
+}
+
+.headerContent {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerContent .leftSide {
+    margin: 0px 50px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    gap: 1.5rem;
+}
+
+.headerContent .leftSide .title {
+    font-size: 48px;
+    font-weight: bold;
+    flex: 1;
+}
+.headerContent .leftSide .subTitle {
+    font-size: 24px;
+    font-weight: 400;
+    color: gray;
+    flex: 1;
+}
+
+.headerContent .leftSide .actionButton {
+    font-size: 20px;
+    font-weight: 600;
+    width: 180px;
+    color: var(--color-bg-light);
+    background-color: var(--color-accent);
+    border-radius: 8px;
+    box-shadow: 1px 1px 10px var(--color-accent);
+    transition-duration: 0.5s;
+}
+
+.headerContent .leftSide .actionButton:hover {
+    scale: 1.1;
+}
+
+.headerContent .rightSide {
+    margin: 0px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerContent .rightSide img {
+    height: 70vh;
+}
+
+.servicesSection {
+    padding: 2.5rem 0px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--color-bg-dark);
+}
+
+.servicesSection .title {
+    margin: 0px 2.5rem;
+    color: var(--color-bg-light);
+}
+
+.servicesSection .smallTitle {
+    margin-top: 1rem;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+    font-size: 20px;
+    font-weight: 400;
+    color: gray;
+}
+
+.servicesContainer {
+    margin: 2.5rem 2.5rem 0px 2.5rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.servicesSection .servicesContainer .service {
+    padding: 1.5rem;
+    min-height: 300px;
+    min-width: 300px;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    background-color: var(--color-bg-secondary-dark);
+    border-radius: 18px;
+    box-shadow: 0 0 8px rgba(108, 91, 123, 0.4), 0 2px 4px rgba(0, 0, 0, 0.6);
+    transition-duration: 0.5s;
+}
+
+.servicesSection .servicesContainer .service:hover {
+    scale: 1.05;
+}
+
+.servicesSection .servicesContainer .service .title {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--color-bg-light);
+}
+
+.servicesSection .servicesContainer .service .subTitle {
+    font-size: 16px;
+    color: gray;
+}
+
+.bestSellingSection {
+    padding: 2.5rem 0px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.bestSellingSection .title {
+    color: var(--color-bg-dark);
+}
+
+.bestSellingSection .carsContainer {
+    margin: 0 2.5rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.car {
+    min-height: 300px;
+    min-width: 300px;
+    max-width: 22.5%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: var(--color-bg-light);
+    border-radius: 20px;
+    box-shadow: 1px 10px 20px gray;
+    transition-duration: 0.5s;
+    border-radius: 18px;
+}
+
+.car:hover {
+    scale: 1.05;
+}
+
+.car img {
+    border-radius: 18px;
+    width: 100%;
+}
+
+.car .priceLocationContainer {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.car .priceLocationContainer p {
+    margin: 0px 20px;
+}
+
+.car .priceLocationContainer .price {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.car .priceLocationContainer .location {
+    color: gray;
+    font-size: 14px;
+}
+
+.car .name {
+    margin-top: 10px;
+    margin-left: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+}
+
+.car .bookNowButton {
+    margin: 20px;
+    padding: .5rem 1.5rem;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--color-bg-light);
+    background-color: var(--color-accent);
+    border-radius: 12px;
+    box-shadow: 1px 1px 8px var(--color-accent);
+    transition-duration: 0.5s;
+    cursor: pointer;
+}
+
+.car .bookNowButton:hover {
+    scale: 1.1;
+}
+
+.reviewsSection {
+    padding: 2.5rem 0px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-bg-dark);
+}
+
+.reviewsSection .leftSide {
+    width:50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+}
+
+.reviewsSection .leftSide .title {
+    margin: 0px 2.5rem;
+    color: var(--color-bg-light);
+}
+
+.reviewsSection .rightSide {
+    margin: 2.5rem 0px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.reviewsSection .rightSide .review {
+    padding: 1rem 1.5rem;
+    margin: 0px 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0.75rem;
+    background-color: var(--color-bg-light);
+    box-shadow: 2px 2px 8px var(--color-accent);
+    border-radius: 18px;
+}
+
+.reviewsSection .rightSide .review .author {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.callToActionSection {
+    padding: 1.5rem 0px;
+    margin: 0px 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--color-accent);
+    transform: translateY(50px);
+    text-align: center;
+}
+
+.callToActionSection .title {
+    color: white;
+}
+
+.callToActionSection .subTitle {
+    color: lightgray;
+}
+
+.callToActionSection .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+footer {
+    padding: 80px 60px 30px 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-bg-dark);
+}
+
+footer .title {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+footer .socialLinks {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.title {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 600px) {
+    header {
+        display: none;
+    }
+
+    .title {
+        font-size: 32px;
+    }
+
+    .servicesSection .smallTitle {
+        font-size: 18px;
+    }
+
+    .servicesSection .servicesContainer .service {
+        width: 100%;
+    }
+
+    .bestSellingSection .carsContainer .car {
+        max-width: none;
+    }
+
+    .reviewsSection {
+        flex-direction: column;
+    }
+
+    .reviewsSection .leftSide {
+        width: 100%;
+        text-align: center;
+    }
+
+    .reviewsSection .rightSide {
+        width: 100%;
+        margin-bottom: 0px;
+    }
+
+    .callToActionSection {
+        margin: 0px 2.5rem;
+        transform: translateY(2.5rem);
+    }
+
+    .callToActionSection .subTitle {
+        margin: 0px 2rem;
+    }
+
+    .callToActionSection .buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    footer {
+        padding: 5rem 60px 30px 30px;
+    }
+}
