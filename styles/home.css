@@ -54,6 +54,7 @@ header {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    background-color: white;
 }
 
 nav {
@@ -125,7 +126,7 @@ nav ul li:hover {
 .headerContent .leftSide {
     margin: 0;
     padding: 0;
-    width: 60%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -153,7 +154,7 @@ nav ul li:hover {
 .headerContent .rightSide {
     margin: 0;
     padding: 0;
-    width: 40%;
+    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
