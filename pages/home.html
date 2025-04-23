@@ -20,11 +20,24 @@
                 <li>CONTACT</li>
                 <li>REVIEWS</li>
             </ul>
-            <div class="buttonWithRightIcon navActionButton">
-                <p class="text">Browse</p>
-                <i class="fa-solid fa-arrow-right" style="color: white;"></i>
-            </div>
+            <a href="/pages/catalogue.html">
+                <div class="buttonWithRightIcon navActionButton">
+                    <p class="text">Browse</p>
+                    <i class="fa-solid fa-arrow-right" style="color: white;"></i>
+                </div>
+            </a>
+            <i class="fa-solid fa-bars sideMenuIcon" style="color: #590a9a; font-size: 20px; font-weight: bold;" onclick="toggleSideMenu(true)"></i>
         </nav>
+        <div class="sideMenu">
+            <ul>
+                <li>HOME</li>
+                <li>ABOUT</li>
+                <li>CONTACT</li>
+                <li>REVIEWS</li>
+                <li style="color: white; background-color: #7E5A9B; font-weight: bold;">Browse<span class="fa-solid fa-arrow-right" style="color: white; margin-left: 10px; font-weight: bold;"></span></li>
+            </ul>
+            <i class="fa-solid fa-xmark" id="closeButton" onclick="toggleSideMenu(false)"></i>
+        </div>
         <div class="headerContent">
             <div class="leftSide">
                 <p class="title">Fast and Affordable Car Rentals<br>Are One Click Away With <span style="color: #7E5A9B;">VireonCars</span></p>
@@ -165,5 +178,14 @@
             <i class="fa fa-brands fa-telegram" style="font-size: 30px;"></i>
         </div>
     </footer>
+    <script>
+       function toggleSideMenu(show) {
+            const sideMenuIcon = document.querySelector('.sideMenuIcon');
+            const sideMenu = document.querySelector('.sideMenu');
+            
+            if (sideMenuIcon) sideMenuIcon.style.display = show ? 'none' : 'block';
+            if (sideMenu) sideMenu.style.display = show ? 'flex' : 'none';
+       }
+    </script>
 </body>
 </html>

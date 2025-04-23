@@ -31,6 +31,10 @@ body {
     overflow-x: hidden;
 }
 
+a {
+    text-decoration: none;
+}
+
 p {
     margin: 0;
     padding: 0;
@@ -108,8 +112,55 @@ nav ul li:hover {
     transition-duration: 0.5s;
 }
 
-.navActionButton:hover {
+header nav .sideMenuIcon {
+    display: none;
+}
+
+header .sideMenu {
+    width: 50%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+header .sideMenu ul {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+header .sideMenu ul li {
+    padding: .5rem 2.5rem;
+    min-width: 30%;
+    color: var(--color-bg-dark);
+    background-color: var(--color-bg-light);
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition-duration: 0.5s;
+}
+
+header .sideMenu ul li:hover {
     scale: 1.1;
+}
+
+header .sideMenu #closeButton {
+    color: var(--color-bg-light);
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
 }
 
 .headerContent {
@@ -446,6 +497,10 @@ footer .socialLinks {
         display: none;
     }
 
+    header nav .sideMenuIcon {
+        display: block;
+    }
+
     header .headerContent {
         margin: 2.5rem 1.5rem;
         flex-direction: column;
@@ -454,12 +509,12 @@ footer .socialLinks {
 
     header .headerContent .leftSide {
         width: 90%;
-        height: 45%;
+        height: 40%;
     }
 
     header .headerContent .rightSide {
         order: -1;
-        height: 45%;
+        height: 40%;
         width: 100%;
     }
 
