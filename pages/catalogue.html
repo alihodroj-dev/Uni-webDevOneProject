@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VireonCars - Catalogue</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/styles/catalogue.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <p class="navTitleLogo">Vireon<span style="margin: 0px; padding: 0px; color: #7E5A9B; font-weight: 700;">Cars</span></p>
+            <ul>
+                <li>HOME</li>
+                <li>ABOUT</li>
+                <li>CONTACT</li>
+                <li>REVIEWS</li>
+            </ul>
+            <i class="fa-solid fa-bars sideMenuIcon" style="color: #590a9a; font-size: 20px; font-weight: bold;" onclick="toggleSideMenu(true)"></i>
+        </nav>
+        <div class="sideMenu">
+            <ul>
+                <li>HOME</li>
+                <li>ABOUT</li>
+                <li>CONTACT</li>
+                <li>REVIEWS</li>
+            </ul>
+            <i class="fa-solid fa-xmark" id="closeButton" onclick="toggleSideMenu(false)"></i>
+        </div>
+        <div class="catalogueContainer">
+            <p class="title">Filters</p>
+            <div class="filters">
+                <div class="all selectedFilter">
+                    <p>All Cars</p>
+                </div>
+
+                <div class="Sedan">
+                    <p>Sedan</p>
+                </div>
+
+                <div class="Coupe">
+                    <p>Coupe</p>
+                </div>
+
+                <div class="Range">
+                    <p>Range</p>
+                </div>
+            </div>
+            <p class="title">Catalogue</p>
+            <div class="carsContainer">
+                
+            </div>
+        </div>
+    </header>
+</body>
+<script>
+
+    const carData = [
+    {
+        name: "BMW 328i",
+        price: 80,
+        location: "California",
+        image: "/Images/bmw.jpg",
+        category: "Sedan"
+    },
+    {
+        name: "Audi A4",
+        price: 95,
+        location: "New York",
+        image: "/Images/audi.jpg",
+        category: "Sedan"
+    },
+    {
+        name: "Mercedes C-Class",
+        price: 110,
+        location: "Texas",
+        image: "/Images/mercedes.jpg",
+        category: "Sedan"
+    },
+    {
+        name: "Ford Mustang",
+        price: 105,
+        location: "Arizona",
+        image: "/Images/mustang.jpg",
+        category: "Coupe"
+    },
+    {
+        name: "Chevrolet Camaro",
+        price: 102,
+        location: "Nevada",
+        image: "/Images/camaro.jpg",
+        category: "Coupe"
+    },
+    {
+        name: "Porsche 911",
+        price: 150,
+        location: "Florida",
+        image: "/Images/porsche.jpg",
+        category: "Coupe"
+    },
+    {
+        name: "Range Rover Evoque",
+        price: 130,
+        location: "Colorado",
+        image: "/Images/range1.jpg",
+        category: "Range"
+    },
+    {
+        name: "Range Rover Sport",
+        price: 160,
+        location: "Washington",
+        image: "/Images/range2.jpg",
+        category: "Range"
+    }
+    ];
+
+
+    const carsContainer = document.querySelector(".carsContainer");
+    const filterButtons = document.querySelectorAll(".filters .all, .filters .Sedan, .filters .Coupe, .filters .Range");
+
+    function renderCars(category = "All") {
+    carsContainer.innerHTML = "";
+
+    const filteredCars = category === "All"
+        ? carData
+        : carData.filter(car => car.category === category);
+
+    filteredCars.forEach(car => {
+        carsContainer.innerHTML += `
+        <div class="car">
+            <img src="${car.image}" alt="${car.name}">
+            <div class="priceLocationContainer">
+            <p class="price">$${car.price}.00 <span style="color: gray; font-weight: 500; font-size: 14px;">/Day</span></p>
+            <p class="location">
+                <span class="fa fa-solid fa-location-dot" style="color: gray; font-size: 14px; margin-right: 2px;"></span>
+                ${car.location}
+            </p>
+            </div>
+            <p class="name">${car.name}</p>
+            <p class="bookNowButton">Book Now
+            <span class="fa fa-solid fa-phone" style="color: white; font-size: 12px; margin-left: 10px;"></span>
+            </p>
+        </div>
+        `;
+    });
+    }
+
+    // Initial load with all cars
+    renderCars();
+
+    // Add click events to filter buttons
+    filterButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        const selectedCategory = btn.innerText.trim();
+        btn.classList.add('selectedFilter');
+        filterButtons.forEach(btn2 => {
+            if (btn.className != btn2.className) { btn2.classList.remove('selectedFilter');}
+        })
+        renderCars(selectedCategory === "All Cars" ? "All" : selectedCategory);
+    });
+    });
+ </script>
+</html>
