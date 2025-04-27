@@ -33,6 +33,7 @@ body {
 
 a {
     text-decoration: none;
+    color: black;
 }
 
 p {
@@ -74,6 +75,7 @@ nav {
     padding: 0;
     font-size: 20px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 nav ul {
@@ -182,6 +184,10 @@ nav .sideMenuIcon {
     justify-content: center;
     align-items: center;
     gap: 2.5rem;
+}
+
+.catalogueContainer .filters .filter {
+    cursor: pointer;
 }
 
 .catalogueContainer .filters .selectedFilter {
