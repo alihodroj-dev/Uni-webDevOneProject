@@ -23,6 +23,9 @@
                 <li>ABOUT</li>
                 <li>CONTACT</li>
                 <li>REVIEWS</li>
+                <a href="/pages/cart.html">
+                    <li>CART</li>
+                </a>
             </ul>
             <a href="/pages/catalogue.html">
                 <div class="buttonWithRightIcon navActionButton">
@@ -182,14 +185,14 @@
             <i class="fa fa-brands fa-telegram" style="font-size: 30px;"></i>
         </div>
     </footer>
-    <script>
-       function toggleSideMenu(show) {
-            const sideMenuIcon = document.querySelector('.sideMenuIcon');
-            const sideMenu = document.querySelector('.sideMenu');
-            
-            if (sideMenuIcon) sideMenuIcon.style.display = show ? 'none' : 'block';
-            if (sideMenu) sideMenu.style.display = show ? 'flex' : 'none';
-       }
-    </script>
 </body>
+<script>
+    function toggleSideMenu(show) {
+         const sideMenuIcon = document.querySelector('.sideMenuIcon');
+         const sideMenu = document.querySelector('.sideMenu');
+         
+         if (sideMenuIcon) sideMenuIcon.style.display = show ? 'none' : 'block';
+         if (sideMenu) sideMenu.style.display = show ? 'flex' : 'none';
+    }
+ </script>
 </html>
