@@ -3,6 +3,7 @@
     --color-bg-dark: #0D0D0D;
     --color-bg-secondary-dark: #101010;
     --color-accent: #7E5A9B;
+    background-image: linear-gradient(to bottom right,white, #c5abd9);
 }
 
 .buttonWithRightIcon {
