@@ -16,10 +16,25 @@
     <nav>
       <p class="navTitleLogo">Vireon<span style="margin: 0px; padding: 0px; color: #7E5A9B; font-weight: 700;">Cars</span></p>
       <ul>
-        <a href="home.html"><li>HOME</li></a>
-        <a href="about.html"><li>ABOUT</li></a>
-        <a href="contact.html"><li>CONTACT</li></a>
-      </ul>
+        <a href="/pages/login.html">
+            <li>LOGIN</li>
+        </a>
+        <a href="/pages/signup.html">
+            <li>SIGNUP</li>
+        </a>
+        <a href="/pages/home.html">
+            <li>HOME</li>
+        </a>
+        <a href="/pages/about.html">
+            <li>ABOUT</li>
+        </a>
+        <a href="/pages/contact.html">
+            <li>CONTACT</li>
+        </a>
+        <a href="/pages/cart.html">
+            <li>CART</li>
+        </a>
+    </ul>
       <a href="catalogue.html">
         <div class="buttonWithRightIcon navActionButton">
           <p class="text">Browse</p>
@@ -30,10 +45,27 @@
     </nav>
     <div class="sideMenu">
       <ul>
-        <a href="home.html"><li>HOME</li></a>
-        <a href="about.html"><li>ABOUT</li></a>
-        <a href="contact.html"><li>CONTACT</li></a>
-        <li style="color: white; background-color: #7E5A9B; font-weight: bold;">Browse<span class="fa-solid fa-arrow-right" style="color: white; margin-left: 10px; font-weight: bold;"></span></li>
+        <a href="/pages/login.html">
+            <li>LOGIN</li>
+        </a>
+        <a href="/pages/signup.html">
+            <li>SIGNUP</li>
+        </a>
+        <a href="/pages/home.html">
+            <li>HOME</li>
+        </a>
+        <a href="/pages/about.html">
+            <li>ABOUT</li>
+        </a>
+        <a href="/pages/contact.html">
+            <li>CONTACT</li>
+        </a>
+        <a href="/pages/cart.html">
+            <li>CART</li>
+        </a>
+        <a href="/pages/catalogue.html">
+          <li style="color: white; background-color: #7E5A9B; font-weight: bold;">Browse<span class="fa-solid fa-arrow-right" style="color: white; margin-left: 10px; font-weight: bold;"></span></li>
+        </a>
       </ul>
       <i class="fa-solid fa-xmark" id="closeButton" onclick="toggleSideMenu(false)"></i>
     </div>
@@ -246,15 +278,14 @@
       <a href="#"><i class="fa fa-brands fa-telegram"></i></a>
     </div>
   </footer>
-
-  <script>
-    function toggleSideMenu(show) {
-      const sideMenuIcon = document.querySelector('.sideMenuIcon');
-      const sideMenu = document.querySelector('.sideMenu');
-      
-      if (sideMenuIcon) sideMenuIcon.style.display = show ? 'none' : 'block';
-      if (sideMenu) sideMenu.style.display = show ? 'flex' : 'none';
-    }
-  </script>
 </body>
+<script>
+  function toggleSideMenu(show) {
+    const sideMenuIcon = document.querySelector('.sideMenuIcon');
+    const sideMenu = document.querySelector('.sideMenu');
+    
+    if (sideMenuIcon) sideMenuIcon.style.display = show ? 'none' : 'block';
+    if (sideMenu) sideMenu.style.display = show ? 'flex' : 'none';
+  }
+</script>
 </html>

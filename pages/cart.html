@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="../styles/catalogue.css">
+    <link rel="stylesheet" href="/styles/cart.css">
 </head>
 <body>
     <header>
@@ -36,6 +36,12 @@
                     <li>CART</li>
                 </a>
             </ul>
+            <a href="/pages/catalogue.html">
+                <div class="buttonWithRightIcon navActionButton">
+                    <p class="text">Browse</p>
+                    <i class="fa-solid fa-arrow-right" style="color: white;"></i>
+                </div>
+            </a>
             <i class="fa-solid fa-bars sideMenuIcon" style="color: #590a9a; font-size: 20px; font-weight: bold;" onclick="toggleSideMenu(true)"></i>
         </nav>
         <div class="sideMenu">
@@ -64,31 +70,20 @@
               </ul>
             <i class="fa-solid fa-xmark" id="closeButton" onclick="toggleSideMenu(false)"></i>
         </div>
-        <div class="catalogueContainer">
-            <p class="title">Filters</p>
-            <div class="filters">
-                <div class="all selectedFilter filter">
-                    <p>All Cars</p>
-                </div>
+        <div class="cartContainer">
+            <h1>Shopping Cart</h1>
 
-                <div class="Sedan filter">
-                    <p>Sedan</p>
-                </div>
-
-                <div class="Coupe filter">
-                    <p>Coupe</p>
-                </div>
-
-                <div class="Range filter">
-                    <p>Range</p>
-                </div>
+            <div class="cartItems">
+                <!-- Car items will be populated here -->
+              </div>
+        
+            <div class="cartSummary">
+              <h3></h3>
+              <button class="checkoutBtn">Proceed to Checkout</button>
             </div>
-            <p class="title">Catalogue</p>
-            <div class="carsContainer">
-                
-            </div>
+
         </div>
     </header>
 </body>
-<script src="/Scripts/catalogue.js"></script>
+<script src="/Scripts/cart.js"></script>
 </html>
