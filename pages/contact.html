@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="contact.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <title>VireonCars - Contact Us</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <p class="navTitleLogo">Vireon<span style="margin: 0px; padding: 0px; color: #7E5A9B; font-weight: 700;">Cars</span></p>
+      <ul>
+        <a href="home.html"><li>HOME</li></a>
+        <a href="about.html"><li>ABOUT</li></a>
+        <a href="contact.html"><li>CONTACT</li></a>
+      </ul>
+      <a href="catalogue.html">
+        <div class="buttonWithRightIcon navActionButton">
+          <p class="text">Browse</p>
+          <i class="fa-solid fa-arrow-right" style="color: white;"></i>
+        </div>
+      </a>
+      <i class="fa-solid fa-bars sideMenuIcon" style="color: #590a9a; font-size: 20px; font-weight: bold;" onclick="toggleSideMenu(true)"></i>
+    </nav>
+    <div class="sideMenu">
+      <ul>
+        <a href="home.html"><li>HOME</li></a>
+        <a href="about.html"><li>ABOUT</li></a>
+        <a href="contact.html"><li>CONTACT</li></a>
+        <li style="color: white; background-color: #7E5A9B; font-weight: bold;">Browse<span class="fa-solid fa-arrow-right" style="color: white; margin-left: 10px; font-weight: bold;"></span></li>
+      </ul>
+      <i class="fa-solid fa-xmark" id="closeButton" onclick="toggleSideMenu(false)"></i>
+    </div>
+  </header>
+
+  <main>
+    <div class="container" role="main">
+      <h2>Contact Us</h2>
+      <div class="error-message" id="errorMsg"></div>
+      <div class="success-message" id="successMsg"></div>
+      <form id="contactForm" novalidate>
+        <label for="contactName">Your Name*</label>
+        <input
+          type="text"
+          id="contactName"
+          placeholder="Enter your full name"
+          required
+        />
+        
+        <label for="contactEmail">Email*</label>
+        <input
+          type="email"
+          id="contactEmail"
+          placeholder="example@gmail.com"
+          required
+        />
+        
+        <label for="contactPhone">Phone Number</label>
+        <input
+          type="tel"
+          id="contactPhone"
+          placeholder="Enter your phone number"
+          pattern="[0-9]{8,15}"
+          title="Please enter a valid phone number (8-15 digits)"
+        />
+        
+        <label for="contactMessage">Your Message*</label>
+        <textarea
+          id="contactMessage"
+          placeholder="How can we help you?"
+          required
+        ></textarea>
+        
+        <button type="submit" class="buttonWithRightIcon">
+          <i class="fa-solid fa-paper-plane" style="color: white;"></i>
+          <span style="color:white;">Send Message</span>
+        </button>
+      </form>
+    </div>
+  </main>
+  
+  <footer>
+    <p class="title">Vireon<span style="margin: 0px; padding: 0px; color: #7E5A9B; font-weight: 700;">Cars</span></p>
+    <div class="socialLinks">
+      <i class="fa fa-brands fa-whatsapp" style="font-size: 30px;"></i>
+      <i class="fa fa-brands fa-instagram" style="font-size: 30px;"></i>
+      <i class="fa fa-brands fa-facebook-f" style="font-size: 30px;"></i>
+      <i class="fa fa-brands fa-telegram" style="font-size: 30px;"></i>
+    </div>
+  </footer>
+
+  <script>
+    function toggleSideMenu(show) {
+      const sideMenuIcon = document.querySelector('.sideMenuIcon');
+      const sideMenu = document.querySelector('.sideMenu');
+      
+      if (sideMenuIcon) sideMenuIcon.style.display = show ? 'none' : 'block';
+      if (sideMenu) sideMenu.style.display = show ? 'flex' : 'none';
+    }
+
+    function showError(message) {
+      const errorMsg = document.getElementById("errorMsg");
+      errorMsg.textContent = message;
+      errorMsg.style.display = "block";
+      document.getElementById("successMsg").style.display = "none";
+    }
+
+    function showSuccess(message) {
+      const successMsg = document.getElementById("successMsg");
+      successMsg.textContent = message;
+      successMsg.style.display = "block";
+      document.getElementById("errorMsg").style.display = "none";
+    }
+
+    function clearMessages() {
+      document.getElementById("errorMsg").style.display = "none";
+      document.getElementById("successMsg").style.display = "none";
+    }
+
+    function validateEmail(email) {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email);
+    }
+
+    function validatePhone(phone) {
+      if (!phone) return true; 
+      const re = /^\d{8,15}$/;
+      return re.test(phone);
+    }
+
+    function highlightErrorFields(fieldIds) {
+      // Remove all error highlights first
+      document.querySelectorAll('.error-field').forEach(el => {
+        el.classList.remove('error-field');
+      });
+      
+      // Add error class to fields with errors
+      fieldIds.forEach(id => {
+        const field = document.getElementById(id);
+        if (field) field.classList.add('error-field');
+      });
+    }
+
+   
+    function saveContactToJSON(contactData) {
+      let contacts = JSON.parse(localStorage.getItem('contactSubmissions')) || [];
+      contacts.push(contactData);
+      localStorage.setItem('contactSubmissions', JSON.stringify(contacts));
+      console.log('All stored contacts:', contacts);
+    }
+
+    //listener / handler
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      clearMessages();
+
+     
+      const name = document.getElementById("contactName").value.trim();
+      const email = document.getElementById("contactEmail").value.trim();
+      const phone = document.getElementById("contactPhone").value.trim();
+      const message = document.getElementById("contactMessage").value.trim();
+      const timestamp = new Date().toISOString();
+
+      const errors = [];
+      const errorFields = [];
+      
+      if (!name) {
+        errors.push("Name is required");
+        errorFields.push("contactName");
+      }
+      
+      if (!email) {
+        errors.push("Email is required");
+        errorFields.push("contactEmail");
+      } else if (!validateEmail(email)) {
+        errors.push("Please enter a valid email address");
+        errorFields.push("contactEmail");
+      }
+      
+      if (phone && !validatePhone(phone)) {
+        errors.push("Please enter a valid phone number (8-15 digits)");
+        errorFields.push("contactPhone");
+      }
+      
+      if (!message) {
+        errors.push("Message is required");
+        errorFields.push("contactMessage");
+      }
+	  
+	  
+
+      highlightErrorFields(errorFields);
+
+      if (errors.length > 0) {
+        showError(errors.join(". "));
+        return;
+      }
+
+      const contactData = {
+        name: name,
+        email: email,
+        phone: phone || "Not provided",
+        message: message,
+        timestamp: timestamp
+      };
+
+    
+      saveContactToJSON(contactData);
+
+     
+      showSuccess("Your message has been sent successfully!");
+      document.getElementById("contactForm").reset();
+    });
+  </script>
+</body>
+</html>
