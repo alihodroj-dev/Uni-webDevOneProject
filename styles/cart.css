@@ -161,13 +161,6 @@ nav .sideMenuIcon {
     left: 1.5rem;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background: #f5f5f5;
-  margin: 0;
-  padding: 20px;
-}
-
 header .cartContainer {
     padding-bottom: 2.5rem;
     width: 80%;
@@ -239,6 +232,33 @@ header .cartContainer .cartItems {
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
+}
+
+footer {
+    padding: 30px 30px 30px 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--color-bg-dark);
+}
+
+footer .title {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+footer .socialLinks {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 @media only screen and (max-width: 600px) {
