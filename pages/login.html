@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>VireonCars - login</title>
+</head>
+<body>
+  <header>
+       <nav>
+            <p class="navTitleLogo">Vireon<span style="margin: 0px; padding: 0px; color: #7E5A9B; font-weight: 700;">Cars</span></p>
+            <ul>
+                <a href="home.html"><li>HOME</li></a>
+                <a href="about.html"><li>ABOUT</li></a>
+               <a href="contact.html"><li>CONTACT</li></a>
+            </ul>
+            <a href="catalogue.html">
+                <div class="buttonWithRightIcon navActionButton">
+                    <p class="text">Browse</p>
+                    <i class="fa-solid fa-arrow-right" style="color: white;"></i>
+                </div>
+            </a>
+            <i class="fa-solid fa-bars sideMenuIcon" style="color: #590a9a; font-size: 20px; font-weight: bold;" onclick="toggleSideMenu(true)" ></i>
+        </nav>
+        <div class="sideMenu">
+            <ul>
+               <a href="home.html"><li>HOME</li></a>
+                <a href="about.html"><li>ABOUT</li></a>
+               <a href="contact.html"><li>CONTACT</li></a>
+                <li style="color: white; background-color: #7E5A9B; font-weight: bold;">Browse<span class="fa-solid fa-arrow-right" style="color: white; margin-left: 10px; font-weight: bold;"></span></li>
+            </ul>
+            <i class="fa-solid fa-xmark" id="closeButton" onclick="toggleSideMenu(false)"></i>
+        </div>
+  </header>
+
+  <main>
+  
+    <div class="container" role="main">
+	  <p class="loginMSG">Lets log you in first so that your messages reach us faster! </p>
+      <h2>Login</h2>
+      <div class="error-message" id="errorMsg"></div>
+      <form id="loginForm" novalidate>
+        <label for="loginEmail">Email*</label>
+        <input
+          type="email" required
+          id="loginEmail"
+          placeholder="example@gmail.com"
+          required
+        />
+        <label for="loginPassword">Password*</label>
+        <input
+          type="password"  required
+          id="loginPassword"
+          placeholder="Enter your password"
+          required
+        />
+        <button  class="buttonWithRightIcon navActionButton" type="submit" label="Login">Login</button> <!-- put the same class as browse for simplicity-->
+
+      </form>
+      <div class="redirect-text">
+        Don't have an account? <a href="signup.html">Sign Up</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+        <p class="title">Vireon<span style="margin: 0px; padding: 0px; color: #7E5A9B; font-weight: 700;">Cars</span></p>
+        <div class="socialLinks">
+            <i class="fa fa-brands fa-whatsapp" style="font-size: 30px;"></i>
+            <i class="fa fa-brands fa-instagram" style="font-size: 30px;"></i>
+            <i class="fa fa-brands fa-facebook-f" style="font-size: 30px;"></i>
+            <i class="fa fa-brands fa-telegram" style="font-size: 30px;"></i>
+        </div>
+    </footer>
+    <script>
+    
+    function toggleSideMenu(show) {
+         const sideMenuIcon = document.querySelector('.sideMenuIcon');
+         const sideMenu = document.querySelector('.sideMenu');
+         
+         if (sideMenuIcon) sideMenuIcon.style.display = show ? 'none' : 'block';
+         if (sideMenu) sideMenu.style.display = show ? 'flex' : 'none';
+    }
+
+ 
+    const loginForm = document.getElementById("loginForm");
+    const errorMsg = document.getElementById("errorMsg");
+
+    function showError(message) {
+      errorMsg.textContent = message;
+      errorMsg.style.display = "block";
+    }
+
+    function clearError() {
+      errorMsg.textContent = "";
+      errorMsg.style.display = "none";
+    }
+
+    loginForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      clearError();
+	  
+	 // to check if form is empty
+    const requiredInputs = document.querySelectorAll('#loginForm input[required]');
+    let allEmpty = true;
+
+    // Check if all required fields are empty
+    requiredInputs.forEach(input => {
+        if (input.value.trim() !== '') {
+            allEmpty = false;
+        }
+    });
+
+    // If all fields are empty, show general error and return
+    if (allEmpty) {
+        showError("Please fill in all required fields");
+        return;
+    }
+
+      const email = document.getElementById("loginEmail").value.trim();
+      const password = document.getElementById("loginPassword").value;
+		
+	  if (!email && !password) {
+        showError("Email & password are required");
+        return;
+      }
+      if (!email) {
+        showError("Email is required.");
+        return;
+      }
+      if (!password) {
+        showError("Password is required.");
+        return;
+      }
+	   
+      const user = localStorage.getItem(email);
+      if (!user) {
+        showError("No account found with this email. Please sign up.");
+        return;
+      }
+
+      const userObj = JSON.parse(user);
+      if (userObj.password !== password) {
+        showError("Incorrect password. Please try again.");
+        return;
+      }
+
+      alert("Login successful!");
+      // Redirect user after successful login - change as needed
+      window.location.href = "home.html";
+    });
+  </script>
+</body>
+</html>

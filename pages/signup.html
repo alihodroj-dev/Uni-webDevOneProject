@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signup.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>VireonCars - signup</title>
+</head>
+<body>
+  <header>
+       <nav>
+            <p class="navTitleLogo">Vireon<span style="margin: 0px; padding: 0px; color: #7E5A9B; font-weight: 700;">Cars</span></p>
+            <ul>
+                <a href="home.html"><li>HOME</li></a>
+                <a href="about.html"><li>ABOUT</li></a>
+               <a href="login.html"><li>CONTACT</li></a>
+            </ul>
+            <a href="catalogue.html">
+                <div class="buttonWithRightIcon navActionButton">
+                    <p class="text">Browse</p>
+                    <i class="fa-solid fa-arrow-right" style="color: white;"></i>
+                </div>
+            </a>
+            <i class="fa-solid fa-bars sideMenuIcon" style="color: #590a9a; font-size: 20px; font-weight: bold;" onclick="toggleSideMenu(true)" ></i>
+        </nav>
+        <div class="sideMenu">
+            <ul>
+               <a href="home.html"><li>HOME</li></a>
+                <a href="about.html"><li>ABOUT</li></a>
+               <a href="login.html"><li>CONTACT</li></a>
+                <li style="color: white; background-color: #7E5A9B; font-weight: bold;">Browse<span class="fa-solid fa-arrow-right" style="color: white; margin-left: 10px; font-weight: bold;"></span></li>
+            </ul>
+            <i class="fa-solid fa-xmark" id="closeButton" onclick="toggleSideMenu(false)"></i>
+        </div>
+  </header>
+
+  <main>
+    <div class="container" role="main">
+      <h2>Create Account</h2>
+      <div class="error-message" id="errorMsg"></div>
+      <form id="signupForm" novalidate>
+	  
+	          
+	   <label for="signupFname">First Name*</label>
+        <input
+          type="text"
+          id="signupFname"
+          placeholder="Enter First Name"
+          required
+        />        
+		
+		<label for="signupLname">Last Name*</label>
+        <input
+          type="text"
+          id="signupLname"
+          placeholder="Enter Last Name"
+          required
+        />
+		
+	   <label for="signupNumber">Phone Number*</label>
+        <input
+         type="tel"
+         id="signupNumber"
+         placeholder="Enter your 8-digit phone number"
+         required
+         pattern="[0-9]{8}"
+         title="Please enter exactly 8 digits"
+        />
+		
+        <label for="signupEmail">Email*</label>
+        <input
+          type="email"
+          id="signupEmail"
+          placeholder="example@gamil.com"
+          required
+        />
+        <label for="signupPassword">Password*</label>
+        <input
+          type="Password"
+          id="signupPassword"
+          placeholder="Enter your password"
+          required
+          minlength="6"
+        />
+        <label for="signupConfirmPassword">Confirm Password*</label>
+        <input
+          type="Password"
+          id="signupConfirmPassword"
+          placeholder="Confirm your password"
+          required
+          minlength="6"
+        />
+        <!--<div class="buttonWithRightIcon navActionButton">
+                    <p class="text">Sign Up</p>
+                </div>-->
+				  <button  class="buttonWithRightIcon navActionButton" type="submit" label="SignUp">Sign Up</button>
+      </form>
+      <div class="redirect-text">
+        Already have an account? <a href="login.html">Login</a>
+      </div>
+    </div>
+  </main>
+  
+    <footer>
+        <p class="title">Vireon<span style="margin: 0px; padding: 0px; color: #7E5A9B; font-weight: 700;">Cars</span></p>
+        <div class="socialLinks">
+            <i class="fa fa-brands fa-whatsapp" style="font-size: 30px;"></i>
+            <i class="fa fa-brands fa-instagram" style="font-size: 30px;"></i>
+            <i class="fa fa-brands fa-facebook-f" style="font-size: 30px;"></i>
+            <i class="fa fa-brands fa-telegram" style="font-size: 30px;"></i>
+        </div>
+    </footer>
+  <script>   
+  
+    function toggleSideMenu(show) {
+        const sideMenuIcon = document.querySelector('.sideMenuIcon');
+        const sideMenu = document.querySelector('.sideMenu');
+        
+        if (sideMenuIcon) sideMenuIcon.style.display = show ? 'none' : 'block';
+        if (sideMenu) sideMenu.style.display = show ? 'flex' : 'none';
+    }
+
+    //to validate each ( put outside listener so we can call them)
+	
+    function showError(message) {
+        const errorMsg = document.getElementById("errorMsg");
+        errorMsg.textContent = message;
+        errorMsg.style.display = "block";
+    }
+
+    function clearError() {
+        const errorMsg = document.getElementById("errorMsg");
+        errorMsg.textContent = "";
+        errorMsg.style.display = "none";
+    }
+
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+
+    function validatePhone(phone) {
+        const re = /^\d{8}$/;
+        return re.test(phone);
+    }
+      //listener
+    document.getElementById("signupForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        clearError();
+		
+		
+	// to check if form is empty
+    const requiredInputs = document.querySelectorAll('#signupForm input[required]');
+    let allEmpty = true;
+
+    // Check if all required fields are empty
+    requiredInputs.forEach(input => {
+        if (input.value.trim() !== '') {
+            allEmpty = false;
+        }
+    });
+
+    // If all fields are empty, show general error and return
+    if (allEmpty) {
+        showError("Please fill in all required fields");
+        return;
+    }
+
+        const firstName = document.getElementById("signupFname").value.trim();
+        const lastName = document.getElementById("signupLname").value.trim();
+        const phoneNumber = document.getElementById("signupNumber").value.trim();
+        const email = document.getElementById("signupEmail").value.trim();
+        const password = document.getElementById("signupPassword").value;
+        const confirmPassword = document.getElementById("signupConfirmPassword").value;
+     
+        if (!firstName) {
+            showError("Please enter your first name");
+            return;
+        }
+        
+        if (!lastName) {
+            showError("Please enter your last name");
+            return;
+        }
+        
+        if (!validatePhone(phoneNumber)) {
+            showError("Please enter a valid 8-digit phone number");
+            return;
+        }
+        
+        if (!email) {
+            showError("Email is required");
+            return;
+        }
+        
+        if (!validateEmail(email)) {
+            showError("Please enter a valid email address");
+            return;
+        }
+        
+        if (!password || password.length < 6) {
+            showError("Password must be at least 6 characters");
+            return;
+        }
+        
+        if (password !== confirmPassword) {
+            showError("Passwords do not match");
+            return;
+        }
+		
+        
+        if (localStorage.getItem(email)) {
+            showError("An account with this email already exists. Please login.");
+            return;
+        }
+
+        // similar to a data structure in C++
+        const userInfo = {
+            firstName: firstName,
+            lastName: lastName,
+            phoneNumber: phoneNumber,
+            password: password
+        };
+        
+        localStorage.setItem(email, JSON.stringify(userInfo));
+        
+        alert("Account created successfully! Redirecting to login...");
+        window.location.href = "login.html";
+    });
+</script>
+  </script>
+</body>
+</html>
