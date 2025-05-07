@@ -112,45 +112,7 @@
     <div class="bestSellingSection">
         <p class="title">Our Most Rented Cars</p>
         <div class="carsContainer">
-            <div class="car">
-                <img src="/Images/bmw.jpg" alt="">
-                <div class="priceLocationContainer">
-                    <p class="price">$80.00 <span style="color: gray; font-weight: 500; font-size: 14px;">/Day</span></p>
-                    <p class="location"><span class="fa fa-solid fa-location-dot" style="color: gray; font-size: 14px; margin-right: 2px;"></span> California</p>
-                </div>
-                <p class="name">BMW 328i</p>
-                <p class="bookNowButton">Book Now<span class="fa fa-solid fa-phone" style="color: white; font-size: 12px; margin-left: 10px;"></span></p>
-            </div>
-    
-            <div class="car">
-                <img src="/Images/bmw.jpg" alt="">
-                <div class="priceLocationContainer">
-                    <p class="price">$80.00 <span style="color: gray; font-weight: 500; font-size: 14px;">/Day</span></p>
-                    <p class="location"><span class="fa fa-solid fa-location-dot" style="color: gray; font-size: 14px; margin-right: 2px;"></span> California</p>
-                </div>
-                <p class="name">BMW 328i</p>
-                <p class="bookNowButton">Book Now<span class="fa fa-solid fa-phone" style="color: white; font-size: 12px; margin-left: 10px;"></span></p>
-            </div>
-    
-            <div class="car">
-                <img src="/Images/bmw.jpg" alt="">
-                <div class="priceLocationContainer">
-                    <p class="price">$80.00 <span style="color: gray; font-weight: 500; font-size: 14px;">/Day</span></p>
-                    <p class="location"><span class="fa fa-solid fa-location-dot" style="color: gray; font-size: 14px; margin-right: 2px;"></span> California</p>
-                </div>
-                <p class="name">BMW 328i</p>
-                <p class="bookNowButton">Book Now<span class="fa fa-solid fa-phone" style="color: white; font-size: 12px; margin-left: 10px;"></span></p>
-            </div>
 
-            <div class="car">
-                <img src="/Images/bmw.jpg" alt="">
-                <div class="priceLocationContainer">
-                    <p class="price">$80.00 <span style="color: gray; font-weight: 500; font-size: 14px;">/Day</span></p>
-                    <p class="location"><span class="fa fa-solid fa-location-dot" style="color: gray; font-size: 14px; margin-right: 2px;"></span> California</p>
-                </div>
-                <p class="name">BMW 328i</p>
-                <p class="bookNowButton">Book Now<span class="fa fa-solid fa-phone" style="color: white; font-size: 12px; margin-left: 10px;"></span></p>
-            </div>
         </div>
     </div>
 
@@ -219,5 +181,77 @@
          if (sideMenuIcon) sideMenuIcon.style.display = show ? 'none' : 'block';
          if (sideMenu) sideMenu.style.display = show ? 'flex' : 'none';
     }
+
+    const carsContainer = document.querySelector(".carsContainer");
+
+    const bestSellingCars = [
+    {
+        name: "Mercedes C-Class",
+        price: 110,
+        location: "Texas",
+        image: "/Images/mercedes.jpg",
+        category: "Sedan"
+    },
+    {
+        name: "Porsche 911",
+        price: 150,
+        location: "Florida",
+        image: "/Images/porsche911.jpg",
+        category: "Coupe"
+    },
+    {
+        name: "Range Rover Sport",
+        price: 160,
+        location: "Washington",
+        image: "/Images/range_rover_sport.jpg",
+        category: "Range"
+    },
+    {
+        name: "BMW 330i",
+        price: 210,
+        location: "Washington",
+        image: "/Images/bmw.jpg",
+        category: "Range"
+    }
+    ];
+
+    function addToCart(car) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const carExists = cart.some(item => item.name === car.name);
+
+    if (carExists) {
+        alert(`${car.name} is already in your cart.`);
+    } else {
+        cart.push(car);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert(`${car.name} added to cart!`);
+    }
+    }
+
+    function renderBestSellingCars() {
+        carsContainer.innerHTML = "";
+
+    bestSellingCars.forEach(car => {
+        carsContainer.innerHTML += `
+        <div class="car">
+            <img src="${car.image}" alt="">
+            <div class="priceLocationContainer">
+            <p class="price">$${car.price}.00 <span style="color: gray; font-weight: 500; font-size: 14px;">/Day</span></p>
+            <p class="location">
+                <span class="fa fa-solid fa-location-dot" style="color: gray; font-size: 14px; margin-right: 2px;"></span> ${car.location}
+            </p>
+            </div>
+            <p class="name">${car.name}</p>
+            <p class="bookNowButton" onclick='addToCart(${JSON.stringify(car)})'>Book Now
+            <span class="fa fa-solid fa-phone" style="color: white; font-size: 12px; margin-left: 10px;"></span>
+            </p>
+        </div>
+        `;
+    });
+    }
+
+    renderBestSellingCars();
+
  </script>
 </html>

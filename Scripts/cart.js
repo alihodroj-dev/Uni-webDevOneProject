@@ -42,3 +42,24 @@ function removeFromCart(carName) {
 
 // Load when page loads
 loadCart();
+
+document.addEventListener("DOMContentLoaded", function () {
+  const checkoutBtn = document.querySelector(".checkoutBtn");
+  const cartItemsContainer = document.querySelector(".cartItems");
+
+  checkoutBtn.addEventListener("click", function () {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      if (cart.length === 0) {
+          alert("Your cart is empty.");
+          return;
+      }
+
+      localStorage.removeItem("cart");
+
+      cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+      totalElement.textContent = "Total: $0.00";
+
+      alert("You will receive an order confirmation soon.");
+  });
+});
